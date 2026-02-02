@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Ayesha ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    .page {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      color: #fdfdfd;
+      animation: fade 1.2s ease;
+    }
+
+    .page.active {
+      display: flex;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .bg {
+      background: linear-gradient(
+        120deg,
+        #2b5876,
+        #4e4376,
+        #1fa2ff,
+        #12d8fa,
+        #a6ffcb
+      );
+      background-size: 500% 500%;
+      animation: bgMove 15s ease infinite;
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.45);
+      padding: 55px;
+      border-radius: 26px;
+      max-width: 850px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      font-size: 46px;
+      line-height: 1.4;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    p {
+      font-size: 26px;
+      line-height: 1.7;
+      color: #f1f1f1;
+    }
+
+    button {
+      margin-top: 35px;
+      padding: 16px 38px;
+      font-size: 20px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .yes {
+      background: linear-gradient(135deg, #1fa2ff, #12d8fa, #a6ffcb);
+      color: #083344;
+    }
+
+    .no {
+      background: #999;
+      position: absolute;
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 💕 PAGE 1 -->
+<div class="page bg active" id="page1">
+  <div class="card">
+    <h1>
+      Ayesha,<br>
+      will you be my lover,<br>
+      my favorite person,<br>
+      and my forever thought? ✨
+    </h1>
+    <button class="yes" onclick="startLove()">Yes ❤️</button>
+    <button class="no" id="noBtn">No 🙃</button>
+  </div>
+</div>
+
+<!-- 💔 PAGE 2 -->
+<div class="page bg" id="page2">
+  <div class="card">
+    <p>
+      Ayesha,<br><br>
+      I didn’t plan this.<br>
+      I didn’t expect my heart to choose you so quietly,<br>
+      so deeply, and so completely. 💫<br><br>
+
+      Somewhere between our conversations and silences,<br>
+      you became my safe place,<br>
+      my comfort on heavy days,<br>
+      and my smile without any reason. 🤍<br><br>
+
+      Loving you feels natural —<br>
+      like breathing, like hoping,<br>
+      like believing in something beautiful.
+    </p>
+    <button class="yes" onclick="nextPage(3)">Continue 💕</button>
+  </div>
+</div>
+
+<!-- 💍 PAGE 3 -->
+<div class="page bg" id="page3">
+  <div class="card">
+    <h1>
+      If love is made of moments,<br>
+      I want every moment with you. 🌙<br><br>
+
+      If love is a journey,<br>
+      I don’t need a destination —<br>
+      as long as I’m walking beside you. ✨<br><br>
+
+      Today, tomorrow, and always,<br>
+      it’s you, Ayesha. 💖
+    </h1>
+  </div>
+</div>
+
+<script>
+  const music = document.getElementById("bgMusic");
+  const noBtn = document.getElementById("noBtn");
+
+  music.volume = 0;
+
+  noBtn.addEventListener("mouseover", () => {
+    noBtn.style.left = Math.random() * 80 + "%";
+    noBtn.style.top = Math.random() * 80 + "%";
+  });
+
+  function startLove() {
+    fadeInMusic();
+    nextPage(2);
+  }
+
+  function fadeInMusic() {
+    music.play();
+    let vol = 0;
+    const fade = setInterval(() => {
+      if (vol < 0.6) {
+        vol += 0.01;
+        music.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    }, 100);
+  }
+
+  function nextPage(num) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById("page" + num).classList.add("active");
+  }
+</script>
+
+</body>
+</html>
